@@ -1,0 +1,21 @@
+import subprocess
+
+# Choose which Osho text file to load
+with open("osho_text.txt", "r", encoding="utf-8") as f:
+    text = f.read()
+
+# Your Osho sample voice (10–20 sec, clear)  
+ref_audio = "osho.wav"
+
+# Output file
+out_file = "osho_output.wav"
+
+# Run OpenVoice inference
+subprocess.run([
+    "python", "inference.py",
+    "--ref", ref_audio,
+    "--text", text,
+    "--out", out_file
+])
+
+print(f"\n✅ Osho's voice generated → {out_file}\n")
